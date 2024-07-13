@@ -1,0 +1,27 @@
+local Lucas = {}
+
+local Players = game:GetService("Players")
+
+local Services = {
+    game:GetService('AdService'),
+    game:GetService('SocialService')
+}
+
+local Lucas_mt = {
+    __index = {
+        isAlive = function(self, Entity)
+            return Entity.Character and workspace.Alive:FindFirstChild(Entity.Name) and workspace.Alive:FindFirstChild(Entity.Name).Humanoid.Health > 0
+        end,
+        getBall = function(self)
+            for index, ball in workspace:WaitForChild("Balls"):GetChildren() do
+                if ball:IsA("BasePart") and ball:GetAttribute("realBall") then
+                    return ball
+                end
+            end
+        end
+    }
+}
+
+setmetatable(Lucas, Lucas_mt)
+
+return Lucas
