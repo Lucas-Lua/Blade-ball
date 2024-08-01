@@ -22,6 +22,8 @@ local Lucas_mt = {
     }
 }
 
+-- Credit Nurysium
+
 setmetatable(Lucas, Lucas_mt)
 
 return Lucas
